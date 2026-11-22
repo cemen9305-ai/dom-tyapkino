@@ -123,6 +123,18 @@
     .gallery img:hover { transform: scale(1.02); box-shadow: var(--shadow); }
     .gallery img:first-child { grid-column: span 2; grid-row: span 2; aspect-ratio: auto; height: 100%; }
 
+    /* Video */
+    .video-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    .video-card {
+      background: var(--white); border: 1px solid var(--sand); border-radius: var(--radius);
+      padding: 10px; box-shadow: var(--shadow);
+    }
+    .video-card video {
+      width: 100%; display: block; border-radius: 12px; background: #0f261d;
+      aspect-ratio: 16 / 9; object-fit: cover;
+    }
+    .video-card .caption { padding: 10px 8px 4px; font-size: 14px; color: var(--muted); }
+
     /* Amenities */
     .amenities { background: var(--white); }
     .amen-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
@@ -204,6 +216,7 @@
       .gallery { grid-template-columns: repeat(2, 1fr); }
       .gallery img:first-child { grid-column: span 2; grid-row: span 1; height: auto; aspect-ratio: 4/3; }
       .amen-grid, .rules-grid { grid-template-columns: 1fr 1fr; }
+      .video-grid { grid-template-columns: 1fr; }
       .two-col, .location-grid { grid-template-columns: 1fr; }
     }
     @media (max-width: 600px) {
@@ -223,6 +236,7 @@
     <a class="logo" href="#top"><span class="logo-mark">⌂</span><span>Тяпкино · 38</span></a>
     <nav>
       <a href="#gallery">Фото</a>
+      <a href="#video">Видео</a>
       <a href="#amenities">Удобства</a>
       <a href="#description">Описание</a>
       <a href="#rules">Правила</a>
@@ -262,6 +276,32 @@
         </div>
         <a class="btn" href="https://www.avito.ru/zaokskiy/doma_dachi_kottedzhi/4-k._dom_120_m_2483331164" target="_blank" rel="noopener">Забронировать</a>
       </aside>
+    </div>
+  </section>
+
+  <section class="amenities" id="video">
+    <div class="container">
+      <div class="section-head">
+        <div class="kicker">Видео</div>
+        <h2>Видео</h2>
+        <p class="subtitle">Короткие видео о доме и территории. Нажми на play, чтобы посмотреть.</p>
+      </div>
+      <div class="video-grid">
+        <div class="video-card">
+          <video controls preload="metadata" playsinline poster="assets/photos/photo-01.webp">
+            <source src="assets/videos/video-01.mp4" type="video/mp4">
+            Твой браузер не поддерживает видео.
+          </video>
+          <div class="caption">Видео дома и территории</div>
+        </div>
+        <div class="video-card">
+          <video controls preload="metadata" playsinline poster="assets/photos/photo-02.webp">
+            <source src="assets/videos/video-02.mp4" type="video/mp4">
+            Твой браузер не поддерживает видео.
+          </video>
+          <div class="caption">Видео дома и территории</div>
+        </div>
+      </div>
     </div>
   </section>
 
