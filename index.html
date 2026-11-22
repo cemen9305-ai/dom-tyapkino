@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Дом в Тяпкино — 120 м², 12 соток, баня</title>
+  <meta name="description" content="Аренда дома 120 м² на 12 сотках в д. Тяпкино, Заокский район. Баня, терраса, Wi-Fi, до 8 гостей.">
+  <style>
+    :root {
+      --green: #214e3d;
+      --green-dark: #143326;
+      --cream: #f6f2e9;
+      --sand: #e9dfc9;
+      --accent: #c47b3f;
+      --text: #243029;
+      --muted: #6b756e;
+      --white: #fffdf8;
+      --shadow: 0 16px 40px rgba(20, 51, 38, .12);
+      --radius: 18px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      color: var(--text);
+      background: var(--cream);
+      line-height: 1.6;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+    .container { width: min(1200px, 92%); margin: 0 auto; }
+
+    /* Header */
+    header {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(246, 242, 233, .94);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(33, 78, 61, .12);
+    }
+    .header-inner { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 14px 0; }
+    .logo { display: flex; align-items: center; gap: 10px; font-weight: 800; letter-spacing: -.02em; color: var(--green-dark); }
+    .logo-mark {
+      width: 38px; height: 38px; border-radius: 12px;
+      background: var(--green); color: var(--white);
+      display: grid; place-items: center; font-size: 20px;
+    }
+    nav { display: flex; gap: 24px; font-size: 14px; font-weight: 600; }
+    nav a { color: var(--muted); transition: color .2s; }
+    nav a:hover { color: var(--green); }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      padding: 12px 20px; border-radius: 12px; border: none;
+      background: var(--green); color: var(--white); font-weight: 700;
+      cursor: pointer; transition: transform .2s, background .2s;
+    }
+    .btn:hover { background: var(--green-dark); transform: translateY(-2px); }
+    .btn-outline { background: transparent; border: 1px solid var(--green); color: var(--green); }
+    .btn-outline:hover { background: var(--green); color: var(--white); }
+    .btn-accent { background: var(--accent); }
+    .btn-accent:hover { background: #a96732; }
+
+    /* Hero */
+    .hero { position: relative; min-height: 620px; display: flex; align-items: center; overflow: hidden; }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background-image: url('assets/photos/photo-01.webp');
+      background-size: cover; background-position: center;
+      transform: scale(1.03);
+    }
+    .hero::after {
+      content: ""; position: absolute; inset: 0;
+      background: linear-gradient(90deg, rgba(12, 34, 25, .92) 0%, rgba(12, 34, 25, .68) 45%, rgba(12, 34, 25, .15) 100%);
+    }
+    .hero-inner { position: relative; z-index: 2; display: grid; grid-template-columns: 1.5fr 1fr; gap: 48px; align-items: end; padding: 90px 0 70px; }
+    .badge {
+      display: inline-block; padding: 7px 14px; border-radius: 999px;
+      background: rgba(255,255,255,.14); border: 1px solid rgba(255,255,255,.3);
+      color: #fff; font-size: 13px; font-weight: 700; letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+    .hero h1 { color: #fff; font-size: clamp(38px, 5vw, 64px); line-height: 1.05; margin: 20px 0 16px; letter-spacing: -.035em; }
+    .hero p.lead { color: rgba(255,255,255,.85); font-size: 18px; max-width: 620px; margin: 0 0 28px; }
+    .chips { display: flex; flex-wrap: wrap; gap: 10px; }
+    .chip {
+      background: rgba(255,255,255,.12); color: #fff; border: 1px solid rgba(255,255,255,.22);
+      padding: 8px 14px; border-radius: 10px; font-size: 14px; font-weight: 600;
+    }
+    .price-card {
+      background: var(--white); border-radius: 22px; padding: 28px;
+      box-shadow: var(--shadow); color: var(--text);
+    }
+    .price-card .label { color: var(--muted); font-size: 13px; text-transform: uppercase; letter-spacing: .08em; font-weight: 700; }
+    .price-card .price { font-size: 30px; font-weight: 800; color: var(--green-dark); margin: 6px 0 4px; letter-spacing: -.03em; }
+    .price-card .note { color: var(--muted); font-size: 13px; margin-bottom: 20px; }
+    .price-list { border-top: 1px solid var(--sand); padding-top: 16px; display: grid; gap: 10px; font-size: 14px; }
+    .price-list div { display: flex; justify-content: space-between; gap: 12px; }
+    .price-list b { color: var(--green-dark); }
+    .price-card .btn { width: 100%; margin-top: 22px; }
+
+    /* Stats */
+    .stats { background: var(--white); border-bottom: 1px solid var(--sand); }
+    .stats-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 0; }
+    .stat { padding: 26px 18px; text-align: center; border-right: 1px solid var(--sand); }
+    .stat:last-child { border-right: none; }
+    .stat .num { font-size: 26px; font-weight: 800; color: var(--green-dark); letter-spacing: -.03em; }
+    .stat .cap { font-size: 13px; color: var(--muted); margin-top: 2px; }
+
+    /* Sections */
+    section { padding: 80px 0; }
+    .section-head { margin-bottom: 36px; }
+    .kicker { color: var(--accent); text-transform: uppercase; letter-spacing: .12em; font-weight: 800; font-size: 12px; }
+    h2 { font-size: clamp(28px, 3.5vw, 42px); line-height: 1.15; margin: 8px 0 10px; color: var(--green-dark); letter-spacing: -.03em; }
+    .subtitle { color: var(--muted); max-width: 640px; margin: 0; }
+
+    /* Gallery */
+    .gallery { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+    .gallery img {
+      width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 14px;
+      cursor: zoom-in; transition: transform .25s, box-shadow .25s;
+      background: var(--sand);
+    }
+    .gallery img:hover { transform: scale(1.02); box-shadow: var(--shadow); }
+    .gallery img:first-child { grid-column: span 2; grid-row: span 2; aspect-ratio: auto; height: 100%; }
+
+    /* Amenities */
+    .amenities { background: var(--white); }
+    .amen-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .amen {
+      background: var(--cream); border: 1px solid var(--sand); border-radius: var(--radius);
+      padding: 22px;
+    }
+    .amen .icon { font-size: 26px; margin-bottom: 10px; }
+    .amen h3 { margin: 0 0 6px; font-size: 17px; color: var(--green-dark); }
+    .amen p { margin: 0; color: var(--muted); font-size: 14px; }
+
+    /* Description + extras */
+    .two-col { display: grid; grid-template-columns: 1.6fr 1fr; gap: 48px; align-items: start; }
+    .prose p { margin: 0 0 16px; color: #37433b; }
+    .prose strong { color: var(--green-dark); }
+    .extra-card {
+      background: var(--green); color: #fff; border-radius: var(--radius); padding: 28px;
+      box-shadow: var(--shadow);
+    }
+    .extra-card h3 { margin: 0 0 18px; font-size: 22px; }
+    .extra-item { display: flex; justify-content: space-between; gap: 14px; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,.16); font-size: 14px; }
+    .extra-item:last-child { border-bottom: none; }
+    .extra-item b { color: #f2c98a; white-space: nowrap; }
+    .extra-note { font-size: 12px; opacity: .75; margin-top: 16px; }
+
+    /* Rules */
+    .rules { background: var(--white); }
+    .rules-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .rule { display: flex; gap: 14px; align-items: flex-start; padding: 18px; border: 1px solid var(--sand); border-radius: 14px; background: var(--cream); }
+    .rule .icon { font-size: 22px; line-height: 1; }
+    .rule b { display: block; color: var(--green-dark); font-size: 15px; }
+    .rule span { color: var(--muted); font-size: 13px; }
+
+    /* Location */
+    .location-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 40px; align-items: center; }
+    .map-wrap { border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); border: 1px solid var(--sand); background: var(--white); }
+    .map-wrap img,
+    .map-wrap iframe { width: 100%; height: 100%; min-height: 360px; border: 0; display: block; }
+    .map-wrap iframe { object-fit: cover; }
+    .map-link { display: inline-block; margin-top: 12px; color: var(--green); font-weight: 700; font-size: 14px; text-decoration: underline; text-underline-offset: 3px; }
+    .addr { font-size: 18px; font-weight: 700; color: var(--green-dark); margin: 0 0 18px; }
+    .dist { display: grid; gap: 10px; }
+    .dist div { display: flex; justify-content: space-between; gap: 16px; padding-bottom: 10px; border-bottom: 1px dashed var(--sand); font-size: 14px; }
+    .dist b { color: var(--green-dark); white-space: nowrap; }
+
+    /* CTA */
+    .cta { background: var(--green-dark); color: #fff; text-align: center; }
+    .cta h2 { color: #fff; }
+    .cta p { color: rgba(255,255,255,.75); max-width: 560px; margin: 0 auto 26px; }
+    .cta .btn { background: var(--accent); }
+    .cta .btn:hover { background: #a96732; }
+
+    footer { background: #0f261d; color: rgba(255,255,255,.6); padding: 28px 0; font-size: 13px; }
+    .footer-inner { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+    footer a { color: #fff; text-decoration: underline; text-underline-offset: 3px; }
+
+    /* Lightbox */
+    .lightbox {
+      position: fixed; inset: 0; z-index: 100; background: rgba(8, 20, 15, .94);
+      display: none; align-items: center; justify-content: center; padding: 40px;
+    }
+    .lightbox.open { display: flex; }
+    .lightbox img { max-width: 92vw; max-height: 84vh; object-fit: contain; border-radius: 10px; }
+    .lb-btn {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      width: 48px; height: 48px; border-radius: 50%; border: 1px solid rgba(255,255,255,.4);
+      background: rgba(255,255,255,.1); color: #fff; font-size: 26px; cursor: pointer;
+    }
+    .lb-btn:hover { background: rgba(255,255,255,.2); }
+    .lb-prev { left: 24px; } .lb-next { right: 24px; }
+    .lb-close { position: absolute; top: 20px; right: 24px; font-size: 32px; background: none; border: none; color: #fff; cursor: pointer; }
+    .lb-count { position: absolute; bottom: 20px; left: 0; right: 0; text-align: center; color: rgba(255,255,255,.7); font-size: 14px; }
+
+    @media (max-width: 900px) {
+      nav { display: none; }
+      .hero-inner { grid-template-columns: 1fr; gap: 28px; padding: 70px 0 50px; }
+      .stats-grid { grid-template-columns: repeat(3, 1fr); }
+      .stat:nth-child(3) { border-right: none; }
+      .gallery { grid-template-columns: repeat(2, 1fr); }
+      .gallery img:first-child { grid-column: span 2; grid-row: span 1; height: auto; aspect-ratio: 4/3; }
+      .amen-grid, .rules-grid { grid-template-columns: 1fr 1fr; }
+      .two-col, .location-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .stat { border-bottom: 1px solid var(--sand); }
+      .amen-grid, .rules-grid { grid-template-columns: 1fr; }
+      .gallery { grid-template-columns: 1fr 1fr; gap: 8px; }
+      .hero h1 { font-size: 36px; }
+      .lb-btn { width: 38px; height: 38px; font-size: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container header-inner">
+    <a class="logo" href="#top"><span class="logo-mark">⌂</span><span>Тяпкино · 38</span></a>
+    <nav>
+      <a href="#gallery">Фото</a>
+      <a href="#amenities">Удобства</a>
+      <a href="#description">Описание</a>
+      <a href="#rules">Правила</a>
+      <a href="#location">Расположение</a>
+    </nav>
+    <a class="btn btn-outline" href="https://www.avito.ru/zaokskiy/doma_dachi_kottedzhi/4-k._dom_120_m_2483331164" target="_blank" rel="noopener">Открыть в Avito ↗</a>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="container hero-inner">
+      <div>
+        <span class="badge">Аренда дома · Заокский район</span>
+        <h1>Дом 120 м²<br>в настоящей деревне</h1>
+        <p class="lead">Комфортный отдых в заповедной зоне рядом с музеем-усадьбой Поленово и рекой Ока. Всего 1,5 часа езды от Москвы.</p>
+        <div class="chips">
+          <span class="chip">4 комнаты</span>
+          <span class="chip">12 соток</span>
+          <span class="chip">Баня</span>
+          <span class="chip">До 8 гостей</span>
+          <span class="chip">Wi-Fi</span>
+        </div>
+        <a class="btn btn-accent" style="margin-top: 24px;" href="https://www.avito.ru/zaokskiy/doma_dachi_kottedzhi/4-k._dom_120_m_2483331164" target="_blank" rel="noopener">Написать в Avito ↗</a>
+      </div>
+      <aside class="price-card">
+        <div class="label">Стоимость</div>
+        <div class="price">Цена по запросу</div>
+        <div class="note">Уточняется в объявлении на Avito</div>
+        <div class="price-list">
+          <div><span>Залог</span><b>5 000 ₽</b></div>
+          <div><span>Баня</span><b>6 000 ₽</b></div>
+          <div><span>Бочка-фурако, горячая</span><b>6 000 ₽</b></div>
+          <div><span>Бочка-фурако, холодная</span><b>4 000 ₽</b></div>
+          <div><span>Питомец</span><b>+1 000 ₽</b></div>
+        </div>
+        <a class="btn" href="https://www.avito.ru/zaokskiy/doma_dachi_kottedzhi/4-k._dom_120_m_2483331164" target="_blank" rel="noopener">Забронировать</a>
+      </aside>
+    </div>
+  </section>
+
+  <div class="stats">
+    <div class="container stats-grid">
+      <div class="stat"><div class="num">4</div><div class="cap">комнаты</div></div>
+      <div class="stat"><div class="num">120 м²</div><div class="cap">площадь дома</div></div>
+      <div class="stat"><div class="num">12 сот.</div><div class="cap">участок</div></div>
+      <div class="stat"><div class="num">1</div><div class="cap">этаж + лофт</div></div>
+      <div class="stat"><div class="num">8</div><div class="cap">гостей</div></div>
+      <div class="stat"><div class="num">8 км</div><div class="cap">до центра</div></div>
+    </div>
+  </div>
+
+  <section id="gallery">
+    <div class="container">
+      <div class="section-head">
+        <div class="kicker">Галерея</div>
+        <h2>Посмотрите дом</h2>
+        <p class="subtitle">40 фотографий дома, территории и окрестностей. Нажмите на фото, чтобы открыть на весь экран.</p>
+      </div>
+      <div class="gallery" id="gallery-grid"></div>
+    </div>
+  </section>
+
+  <section class="amenities" id="amenities">
+    <div class="container">
+      <div class="section-head">
+        <div class="kicker">Что есть</div>
+        <h2>Всё для комфортного отдыха</h2>
+      </div>
+      <div class="amen-grid">
+        <div class="amen"><div class="icon">🔌</div><h3>Коммуникации</h3><p>Электричество, газ, отопление, канализация</p></div>
+        <div class="amen"><div class="icon">🚿</div><h3>Санузел</h3><p>1 раздельный внутри дома, душевая кабина</p></div>
+        <div class="amen"><div class="icon">♨️</div><h3>Баня и терраса</h3><p>Своя баня, веранда и зона барбекю</p></div>
+        <div class="amen"><div class="icon">🍽️</div><h3>Техника</h3><p>Холодильник, плита, микроволновка, стиральная и посудомоечная машины, телевизор, фен, утюг</p></div>
+        <div class="amen"><div class="icon">📶</div><h3>Связь</h3><p>Бесплатный Wi-Fi и телевидение</p></div>
+        <div class="amen"><div class="icon">🚗</div><h3>Парковка</h3><p>1 место без навеса, всего до 4 автомобилей. Асфальтированная дорога</p></div>
+        <div class="amen"><div class="icon">🛏️</div><h3>Спальни</h3><p>3 просторные спальни с двуспальными кроватями, детская кровать и лофт-мансарда</p></div>
+        <div class="amen"><div class="icon">🏐</div><h3>Рядом</h3><p>Волейбольная площадка, теннисный корт и частная ферма с козьим молоком</p></div>
+        <div class="amen"><div class="icon">🐕</div><h3>С питомцами</h3><p>Можно с животными, доплата за клининг 1 000 ₽</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="description">
+    <div class="container two-col">
+      <div class="prose">
+        <div class="section-head">
+          <div class="kicker">О доме</div>
+          <h2>Описание</h2>
+        </div>
+        <p><strong>Сдаётся в аренду дом в настоящей деревне.</strong> Комфортный отдых в заповедной зоне рядом с музеем-усадьбой В. Д. Поленова на реке Ока. 1,5 часа езды от столицы, на границе Московской и Тульской областей.</p>
+        <p>Площадь дома — 120 кв. м с собственной территорией и зоной для барбекю. На первом этаже расположена кухня, переходящая в обеденную зону с большим столом. В доме три просторные спальни с двуспальными кроватями, одной детской кроватью (для совсем маленьких соберём дополнительную кроватку), санузел с душевой кабиной и стиральной машиной. Также имеется уютный лофт-мансарда с мягкими матрасами для посиделок.</p>
+        <p>В распоряжении гостей бесплатная парковка вместимостью до 4 автомобилей и бесплатный Wi-Fi. В пешей доступности в деревне — волейбольная площадка, теннисный корт и частная ферма с вкусным козьим молоком и домашним сыром.</p>
+        <p>В Заокском районе: конный двор, платная рыбалка, рестораны и магазины, музей-заповедник Поленово и его окрестности (10 минут на машине), музей командира крейсера «Варяг» В. Ф. Руднева, музей-усадьба А. Т. Болотова «Дворяниново», пляжи на Оке (15 минут на машине).</p>
+        <p>Тула (45 минут): исторический центр, Тульский кремль, зимой горнолыжный комплекс «Царь Град» (35 минут). Музей-усадьба Льва Толстого «Ясная Поляна» — 1,5 часа на машине.</p>
+        <p><strong>Важно:</strong> в зимнее время баня без воды. В распоряжении отдыхающих душ в доме, а в сильные морозы организация бочки зависит от состояния коммуникаций. Зимой также организуем катание на банане — подробности уточняйте.</p>
+      </div>
+      <aside class="extra-card">
+        <h3>Дополнительные услуги</h3>
+        <div class="extra-item"><span>Баня</span><b>6 000 ₽</b></div>
+        <div class="extra-item"><span>Бочка-фурако, горячая</span><b>6 000 ₽</b></div>
+        <div class="extra-item"><span>Бочка-фурако, холодная</span><b>4 000 ₽</b></div>
+        <div class="extra-item"><span>Катание на банане зимой</span><b>по запросу</b></div>
+        <div class="extra-note">Максимальное количество гостей: 6 взрослых и 3 ребёнка. При проживании с питомцами доплата за клининг 1 000 ₽.</div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="rules" id="rules">
+    <div class="container">
+      <div class="section-head">
+        <div class="kicker">Правила проживания</div>
+        <h2>Перед поездкой</h2>
+      </div>
+      <div class="rules-grid">
+        <div class="rule"><div class="icon">🕑</div><div><b>Заезд</b><span>с 14:00</span></div></div>
+        <div class="rule"><div class="icon">🕚</div><div><b>Выезд</b><span>до 12:00</span></div></div>
+        <div class="rule"><div class="icon">👥</div><div><b>Гости</b><span>до 8 человек</span></div></div>
+        <div class="rule"><div class="icon">🧒</div><div><b>Дети</b><span>можно</span></div></div>
+        <div class="rule"><div class="icon">🐾</div><div><b>Питомцы</b><span>можно, +1 000 ₽ за бронь</span></div></div>
+        <div class="rule"><div class="icon">🚭</div><div><b>Курение</b><span>не разрешено</span></div></div>
+        <div class="rule"><div class="icon">🎉</div><div><b>Вечеринки</b><span>разрешены</span></div></div>
+        <div class="rule"><div class="icon">📄</div><div><b>Отчётные документы</b><span>нет</span></div></div>
+        <div class="rule"><div class="icon">💳</div><div><b>Залог</b><span>5 000 ₽</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="location">
+    <div class="container location-grid">
+      <div>
+        <div class="map-wrap">
+          <img src="assets/map.png" alt="Карта района: Тяпкино и окрестности">
+        </div>
+        <a class="map-link" href="https://yandex.ru/maps/?ll=37.2954215%2C54.7254072&z=13&pt=37.2954215,54.7254072" target="_blank" rel="noopener">Открыть в Яндекс Картах ↗</a>
+      </div>
+      <div>
+        <div class="section-head">
+          <div class="kicker">Расположение</div>
+          <h2>Где найти</h2>
+        </div>
+        <p class="addr">Тульская обл., Заокский р-н, муниципальное образование Страховское, д. Тяпкино, 38</p>
+        <div class="dist">
+          <div><span>До центра города</span><b>8 км</b></div>
+          <div><span>До музея Поленово</span><b>10 мин на авто</b></div>
+          <div><span>До пляжей на Оке</span><b>15 мин на авто</b></div>
+          <div><span>До Тулы</span><b>45 мин</b></div>
+          <div><span>До «Царь Града»</span><b>35 мин</b></div>
+          <div><span>До «Ясной Поляны»</span><b>1,5 ч</b></div>
+          <div><span>Дорога</span><b>асфальтированная</b></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="container">
+      <h2>Понравилось?</h2>
+      <p>Напишите хозяину через объявление на Avito, чтобы уточнить даты, цену и забронировать дом.</p>
+      <a class="btn" href="https://www.avito.ru/zaokskiy/doma_dachi_kottedzhi/4-k._dom_120_m_2483331164" target="_blank" rel="noopener">Написать в Avito ↗</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container footer-inner">
+    <span>Дом в Тяпкино · 120 м² · 12 соток</span>
+    <span>Объявление: <a href="https://www.avito.ru/zaokskiy/doma_dachi_kottedzhi/4-k._dom_120_m_2483331164" target="_blank" rel="noopener">Avito ↗</a></span>
+  </div>
+</footer>
+
+<div class="lightbox" id="lightbox">
+  <button class="lb-close" id="lbClose" aria-label="Закрыть">×</button>
+  <button class="lb-btn lb-prev" id="lbPrev" aria-label="Назад">‹</button>
+  <img id="lbImage" src="" alt="">
+  <button class="lb-btn lb-next" id="lbNext" aria-label="Вперёд">›</button>
+  <div class="lb-count" id="lbCount"></div>
+</div>
+
+<script>
+  const photos = Array.from({ length: 40 }, (_, i) => {
+    const n = String(i + 1).padStart(2, '0');
+    return `assets/photos/photo-${n}.${i === 25 ? 'jpg' : 'webp'}`;
+  });
+
+  const grid = document.getElementById('gallery-grid');
+  photos.forEach((src, i) => {
+    const img = document.createElement('img');
+    img.src = src;
+    img.alt = `Фото дома и территории ${i + 1}`;
+    img.loading = 'lazy';
+    img.addEventListener('click', () => openLightbox(i));
+    grid.appendChild(img);
+  });
+
+  const lightbox = document.getElementById('lightbox');
+  const lbImage = document.getElementById('lbImage');
+  const lbCount = document.getElementById('lbCount');
+  let current = 0;
+
+  function render() {
+    lbImage.src = photos[current];
+    lbCount.textContent = `${current + 1} / ${photos.length}`;
+  }
+  function openLightbox(i) { current = i; render(); lightbox.classList.add('open'); }
+  function closeLightbox() { lightbox.classList.remove('open'); }
+  function step(d) { current = (current + d + photos.length) % photos.length; render(); }
+
+  document.getElementById('lbClose').addEventListener('click', closeLightbox);
+  document.getElementById('lbPrev').addEventListener('click', () => step(-1));
+  document.getElementById('lbNext').addEventListener('click', () => step(1));
+  lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
+  document.addEventListener('keydown', e => {
+    if (!lightbox.classList.contains('open')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') step(-1);
+    if (e.key === 'ArrowRight') step(1);
+  });
+</script>
+</body>
+</html>
